@@ -29,6 +29,7 @@ python run.py
 POST
 ------------
 + add user
+
 curl -XPOST -H "Content-type: application/json" \
     -d '{"email":"prueba@gmail.com", "nombre": "Deusna", "apellido":"Pereira","direccion":"Coro falcon","activo":False}' \
     'http://localIP:5000/users/add'
@@ -44,7 +45,7 @@ curl -XPOST -H "Content-type: application/json" \
 curl -XPOST -H "Content-type: application/json" \
     -d '{
 "uuid": "889e068d-b098-4da2-82dd-4c712b0446b6",\
-"user_email": "ejemplo@geopagos.com",\
+"user_email": "ejemplo@geos.com",\
 "amount": 123.45,\
 "date": "2017-10-15 11:35"\
 }' \
@@ -61,16 +62,16 @@ curl -XPOST -H "Content-type: application/json" \
 GET
 ------
 + Get user
-http://localIP:5000/users/<email>
+http://localIP:5000/users/prueba@gmail.com
   
 + List users
 http://localIP:5000/users
 
 + Enable user
-http://localIP:5000users/aprobar/<email>
+http://localIP:5000users/aprobar/ejemplo@geos.com
   
 + sales list - user
-http://localIP:5000/user/ventas/<user_email>
+http://localIP:5000/user/ventas/ejemplo@geos.com
 
 + Disable sale
-http://localIP:5000/venta/anular/<uuid>
+http://localIP:5000/venta/anular/889e068d-b098-4da2-82dd-4c712b0446b6
