@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 import re
+import os
 
 #Constantes de validación
 EMAIL_VALIDATE = '^[(a-z0-9\_\-\.)]+@[(a-z0-9\_\-\.)]+\.[(a-z)]{2,15}$'
 FLOAT = '^[0-9]*\.?[0-9]*$'
+
+mongodrv = os.environ['DB_PORT_27017_TCP_ADDR']
 
 #Método validate_email
 def validate_email(email):
