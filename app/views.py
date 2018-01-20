@@ -52,11 +52,9 @@ def listUsers():
                    ])
             user_venta = user_venta['result']
             
-
-            if user_venta:
-                user["ventas"] = user_venta[0]['count']
-                user["importe_total"] = user_venta[0]['total']
-                    
+            user["ventas"] = user_venta[0]['count'] if user_venta else 0 
+            user["importe_total"] = user_venta[0]['total'] if user_venta else 0
+  
             data.append(user)
 
         return jsonify({'response':"Lista de Usuarios",'data':data}) #retorno de json response
