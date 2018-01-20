@@ -2,8 +2,8 @@
 
 from flask import request, jsonify, make_response
 from flask import Flask, Response
-from flask.ext.pymongo import PyMongo
-from util.util import validate_email,es_float
+from util.util import validate_email,es_float,mongodrv
+import pymongo
 from bson.son import SON
 import datetime
 
@@ -12,11 +12,16 @@ class AppResponse(Response):
      default_mimetype = 'application/json'
   
 
-app = Flask(__name__)
-app.config.from_pyfile('config.cfg')#carga de archivo de configuración
-app.response_class = AppResponse
+try:
+    app = Flask(__name__)
+    app.config.from_pyfile('config.cfg')#carga de archivo de configuración
+    app.response_class = AppResponse
+    mongo = pymongo.MongoClient(host=mongodrv)#instancia Driver PyMongo - Mongodb 
 
-mongo = PyMongo(app)#instancia Driver PyMongo - Mongodb
+    break
+
+except Exception as e:
+    print "Exception: %s - %s"%(type(e), e)
 
 #método listUsers
 @app.route('/users',methods=['GET'])
@@ -89,7 +94,7 @@ def get_one_user(email):
 #fin del método get_one_user
 
 #método add_users
-@app.route('/users/add', methods=['POST'])
+@app.route('/users', methods=['POST'])
 def add_users():
     """
         Método para Crear usuarios indicando email, el cual es validado; nombre; apellido y dirección
@@ -113,9 +118,8 @@ def add_users():
             else:
                 
                     users.insert(data)#insertamos data suministrada
-                    user = users.find_one({'email' : email},{'_id',0})#consultamos registro ingresado
 
-                    response = {'response' : "registro exitoso",'data':user}
+                    response = {'response' : "registro exitoso"}
 
         else:
             response = {'response': "el dato email es requerido"}  
