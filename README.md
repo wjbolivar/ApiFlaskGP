@@ -18,14 +18,6 @@ Install - Linux
 sudo apt-get install -y mongodb-org
 
 
-Run Server
-------------
-
-cd api
-
-python run.py
-
-
 Run Docker
 -----------
 
