@@ -10,14 +10,6 @@ Feactures
 + APIRequest User
 + MongoDB
 
-
-
-Install - Linux
----------------
-
-sudo apt-get install -y mongodb-org
-
-
 Run Docker
 -----------
 
