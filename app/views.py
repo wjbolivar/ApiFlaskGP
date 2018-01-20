@@ -17,9 +17,7 @@ try:
     app.config.from_pyfile('config.cfg')#carga de archivo de configuración
     app.response_class = AppResponse
     mongo = pymongo.MongoClient(host=mongodrv)#instancia Driver PyMongo - Mongodb 
-
-    break
-
+     
 except Exception as e:
     print "Exception: %s - %s"%(type(e), e)
 
