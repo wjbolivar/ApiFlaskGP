@@ -24,6 +24,7 @@ Run Server
 ------------
 
 cd api
+
 python run.py
 
 POST
