@@ -272,7 +272,7 @@ def add_ventas():
 #fin del método add_ventas
 
 #Método user_ventas
-@app.route('/user/ventas/<user_email>', methods=['GET'])
+@app.route('/users/ventas/<user_email>', methods=['GET'])
 def user_ventas(user_email):
     """
         Método para consultar la lista de ventas de un usuario indicando su email
