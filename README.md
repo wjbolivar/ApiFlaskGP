@@ -17,8 +17,6 @@ Install - Linux
 
 sudo apt-get install -y mongodb-org
 
-mongo
-use apirest
 
 Run Server
 ------------
@@ -27,13 +25,22 @@ cd api
 
 python run.py
 
+
+Run Docker
+-----------
+
+$ docker-compose build
+
+$ docker-compose up
+
+
 POST
 ------------
 + add user
 
 curl -XPOST -H "Content-type: application/json" \
-    -d '{"email":"prueba@gmail.com", "nombre": "Deusna", "apellido":"Pereira","direccion":"Coro falcon","activo":False}' \
-    'http://localIP:5000/users/add'
+    -d '{"email":"prueba@gmail.com", "nombre": "Deusna", "apellido":"Pereira","direccion":"Coro falcon","activo":false}' \
+    'http://localIP:5000/users'
 
 + update user
 
@@ -44,12 +51,10 @@ curl -XPOST -H "Content-type: application/json" \
 + add venta
 
 curl -XPOST -H "Content-type: application/json" \
-    -d '{
-"uuid": "889e068d-b098-4da2-82dd-4c712b0446b6",\
-"user_email": "ejemplo@geos.com",\
-"amount": 123.45,\
-"date": "2017-10-15 11:35"\
-}' \
+    -d '{ "uuid": "889e068d-b098-4da2-82dd-4c712b0446b6",\
+    "user_email": "ejemplo@geos.com",\
+    "amount": 123.45,\
+    "date": "2017-10-15 11:35"}' \
     'http://localIP:5000/ventas/add'
     
 + disable user
